@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import NavBar from './components/navbar/navbar';
+import Home from './pages/home/home';
+import Signin from './pages/signin/signin';
+import UserProfile from './pages/profil/profil';
+import Error from './pages/error/error';
+import Footer from './components/footer/footer';
+
 
 function App() {
+  const isConnected = useSelector((state) => state.auth.isConnected);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={ <Home /> } />
+        <Route path='/signin' element={ <Signin /> } />
+        <Route path='profil' element={isConnected ? <UserProfile /> : <Navigate to="/signin" />} />
+        <Route path='*' element={<Error />} />
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 
