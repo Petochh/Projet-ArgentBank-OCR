@@ -15,8 +15,8 @@ function Header(){
     
     const logoutHandler = () => {
         dispatch(logout());
-        sessionStorage.clear();
-        localStorage.clear();
+        sessionStorage.removeItem('token');
+        localStorage.removeItem('token');
         navigate('/');
     }
 
@@ -29,13 +29,13 @@ function Header(){
                 </NavLink>
                 {isConnected ? (
                     <div className='connected'>
-                        <NavLink className="main-nav-item" to='/profil'>
+                        <NavLink className="main-nav-item" to='/profile'>
                             <i class="fa fa-user-circle"></i>
                             <p>{firstname}</p>
                         </NavLink>
                         <NavLink className="main-nav-item" to='/' onClick={logoutHandler}>
                             <i class="fa fa-sign-out"></i>
-                            <p> Sign out </p>
+                            <p> Sign Out </p>
                         </NavLink>
                     </div>
                 ) : (

@@ -1,47 +1,32 @@
-import React from "react";
+import React from 'react';
+import FeatureItem from '../featuresItem/featuresItem';
+import FeaturesItemData from '../../data/featuresItemData.json';
+import IconChat from '../../assets/icons/icon-chat.webp';
+import IconMoney from '../../assets/icons/icon-money.webp';
+import IconSecurity from '../../assets/icons/icon-security.webp';
+import './features.scss';
 
-import './features.scss'
-import Chat from '../../assets/imgs/icon-chat.png'
-import Money from '../../assets/imgs/icon-money.png'
-import Security from '../../assets/imgs/icon-security.png'
+function Features() {
+  const imageData = {
+    "icon-chat.webp": IconChat,
+    "icon-money.webp": IconMoney,
+    "icon-security.webp": IconSecurity
+  };
 
-function Features(){
-    return(
-        <section class="features">
-            <h2 class="sr-only">Features</h2>
-            <div class="feature-item">
-                <img src={Chat} alt="Chat Icon" class="feature-icon" />
-                <h3 class="feature-item-title">You are our #1 priority</h3>
-                <p>
-                    Need to talk to a representative? You can get in touch through our
-                    24/7 chat or through a phone call in less than 5 minutes.
-                </p>
-                </div>
-                <div class="feature-item">
-                <img
-                    src={Money}
-                    alt="Money Icon"
-                    class="feature-icon"
-                />
-                <h3 class="feature-item-title">More savings means higher rates</h3>
-                <p>
-                    The more you save with us, the higher your interest rate will be!
-                </p>
-                </div>
-                <div class="feature-item">
-                <img
-                    src={Security}
-                    alt="Security Icon"
-                    class="feature-icon"
-                />
-                <h3 class="feature-item-title">Security you can trust</h3>
-                <p>
-                    We use top of the line encryption to make sure your data and money
-                    is always safe.
-                </p>
-                </div>
-        </section>
-    );
+  return (
+    <section className="features">
+      <h2 className="sr-only">Features</h2>
+      {FeaturesItemData.map((data) => (
+        <FeatureItem
+          key={data.id}
+          image={imageData[data.image]}
+          descriptionImage={data.descriptionImage}
+          title={data.title}
+          description={data.description}
+        />
+      ))}
+    </section>
+  );
 }
 
 export default Features;

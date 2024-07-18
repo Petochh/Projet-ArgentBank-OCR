@@ -47,9 +47,9 @@ function Form () {
                 dispatch(loginSuccess(token));
                 sessionStorage.setItem("token", token);
                 if (rememberMe) {
-                    localStorage.setItem("token", token);
+                    localStorage.setItem("token", token );
                 }
-                navigate('/profil');
+                navigate('/profile');
             } else {
                 const error = "Incorrect email/password"
                 dispatch(loginFailed(error));
@@ -60,7 +60,7 @@ function Form () {
     }
     return (
         <section className='sign-in-content'>
-            <i className="fa-solid fa-circle-user"></i>
+            <i className="fa fa-user-circle"></i>
             <h2>Sign In</h2>
             <form onSubmit={handleSubmit}>
                 <div className='input-wrapper'>

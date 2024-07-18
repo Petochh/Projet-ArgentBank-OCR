@@ -7,7 +7,9 @@ html {
 }
 
 body {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -15,4 +17,10 @@ body {
 
 .main {
   flex: 1;
+}
+
+.bg-dark {
+  padding: 22px 0 0 0 ;
+  background-color: #12002b;
+  height: 83vh;
 }
